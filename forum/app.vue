@@ -1,5 +1,8 @@
+
+import { NuxtPage } from '#build/components';
+
 <template>
-  <div>
-    <NuxtWelcome />
-  </div>
+   <v-app>
+    <NuxtPage/>
+   </v-app>
 </template>
