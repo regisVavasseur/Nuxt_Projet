@@ -15,6 +15,7 @@ export default defineNuxtConfig({
         config.plugins.push(vuetify({ autoImport: true }))
       })
     },
+    './server/modules/ws-server',
   ],
   nitro: {
     experimental: {
