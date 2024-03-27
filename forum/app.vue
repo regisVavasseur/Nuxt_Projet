@@ -1,6 +1,3 @@
-
-import { NuxtPage } from '#build/components';
-
 <template>
    <v-app>
     <NuxtPage/>
