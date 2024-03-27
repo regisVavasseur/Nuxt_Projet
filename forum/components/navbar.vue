@@ -1,6 +1,5 @@
 <template>
-    <v-app>
-      <v-app-bar app color="primary" dark>
+      <v-app-bar app color="purple" dark>
         <v-toolbar-title>{{ forumName }}</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-tabs right>
@@ -11,8 +10,6 @@
           <v-tab v-if="isUserLoggedIn && isUserAdmin" @click="goToBackOffice">Back office</v-tab>
         </v-tabs>
       </v-app-bar>
-      <!-- Le contenu de votre application ici -->
-    </v-app>
   </template>
   
   <script>
