@@ -23,10 +23,10 @@
     },
     methods: {
       signUp() {
-        // Code pour s'inscrire
+        this.$router.push("/register");
       },
       signIn() {
-        // Code pour se connecter
+        this.$router.push("/login");
       },
       signOut() {
         // Code pour se déconnecter
