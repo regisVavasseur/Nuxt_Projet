@@ -1,0 +1,16 @@
+services:
+  forum_db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: forum
+      MYSQL_USER: forum_user
+      MYSQL_PASSWORD: forum_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
