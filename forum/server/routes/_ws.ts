@@ -1,4 +1,3 @@
-import WebSocket from 'ws';
 
 export default defineWebSocketHandler({
   async handle(request, ws: WebSocket) {
