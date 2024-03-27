@@ -89,7 +89,7 @@ form {
 
 .input-field {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .input-field input {
@@ -121,10 +121,10 @@ form {
 }
 
 .input-field input:focus + label,
-.input-field input:valid + label {
+.input-field input:valid + label
+ {
   top: -20px;
   font-size: 14px;
-  margin: 10px auto;
   color: #000;
 }
 
