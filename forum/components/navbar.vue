@@ -1,6 +1,6 @@
 <template>
       <v-app-bar app color="purple" dark>
-        <v-toolbar-title>{{ forumName }}</v-toolbar-title>
+        <v-toolbar-title @click="index" class="forumName">{{ forumName }}</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-tabs right>
           <v-tab v-if="!isUserLoggedIn" @click="signUp">S'inscrire</v-tab>
@@ -37,6 +37,15 @@
       goToBackOffice() {
         // Code pour aller vers le back office
       },
+      index() {
+        this.$router.push("/");
+      }
     },
   };
   </script>
+
+<style>
+  .forumName {
+    cursor: pointer;
+  }
+</style>
