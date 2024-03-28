@@ -26,8 +26,14 @@
             <h2>Créer un forum</h2>
           </v-card-title>
           <v-card-text>
-            <v-form>
-              <!-- add form fields for creating a new forum -->
+            <v-form>     
+                <v-container>
+                    <v-text-field v-model="forumName" label="Forum" />
+                    <v-text-field v-model="subjectName" label="Subject" />
+                    <v-text-field v-model="message" label="Message" />
+                    <v-text-field v-model="pseudo" label="Pseudo" />
+                    <v-btn @click="createForum">Create Forum</v-btn>
+                </v-container>
             </v-form>
           </v-card-text>
         </v-card>
@@ -39,7 +45,15 @@
           </v-card-title>
           <v-card-text>
             <v-list>
-              <!-- add list of forums that can be edited or deleted -->
+                <v-form>
+                    <v-container>
+                        <v-text-field v-model="forumName" label="Forum" />
+                        <v-text-field v-model="subjectName" label="Subject" />
+                        <v-text-field v-model="message" label="Message" />
+                        <v-text-field v-model="pseudo" label="Pseudo" />
+                        <v-btn @click="editForum">Editer le forum</v-btn>
+                    </v-container>
+                </v-form>
             </v-list>
           </v-card-text>
         </v-card>
@@ -58,6 +72,10 @@ export default {
       username: '',
       email: '',
       isSubmitting: false,
+      forumName: '',
+      subjectName: '',
+      message: '',
+      pseudo: ''
     }
   },
   methods: {
@@ -72,6 +90,12 @@ export default {
         this.isSubmitting = false
       }
     },
+    createForum () {
+      // Add code to create a new forum
+    },
+    editForum () {
+      // Add code to edit a forum
+    }
   },
 }
 </script>
