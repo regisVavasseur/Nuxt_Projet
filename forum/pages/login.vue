@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -36,13 +38,23 @@ export default {
       isLoading: false
     }
   },
-  /*
   methods: {
     async login() {
       this.isLoading = true
       try {
-        this.$store.commit('auth/setUser', { email: this.email })
-        this.$router.push('/')
+        const response = await axios.get('api/user', {
+          auth: {
+            username: this.email,
+            password: this.password
+          }
+        })
+
+        if (response.status === 200) {
+          this.$store.commit('auth/setUser', { email: this.email })
+          this.$router.push('/')
+        } else {
+          throw new Error('Échec de la connexion')
+        }
       } catch (error) {
         console.error(error)
       } finally {
@@ -50,7 +62,6 @@ export default {
       }
     }
   }
-   */
 }
 </script>
 
