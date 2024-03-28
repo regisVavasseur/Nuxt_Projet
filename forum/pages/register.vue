@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -51,9 +53,20 @@ export default {
       if (this.password !== this.confirmPassword) {
         return false;
       }
+
       try {
-        this.$store.commit('auth/setUser', {email: this.email})
-        this.$router.push('/')
+        const response = await axios.post('api/user', {
+          username: this.userName,
+          email: this.email,
+          password: this.password
+        })
+
+        if (response.status === 201) {
+          this.$store.commit('auth/setUser', { email: this.email })
+          this.$router.push('/')
+        } else {
+          throw new Error('Inscription échouée')
+        }
       } catch (error) {
         console.error(error)
       } finally {

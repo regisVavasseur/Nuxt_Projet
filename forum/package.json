@@ -12,6 +12,7 @@
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "@types/ws": "^8.5.10",
+    "axios": "^1.6.8",
     "bluebird": "^3.7.2",
     "mysql2": "^3.9.3",
     "nuxt": "^3.11.1",
