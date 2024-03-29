@@ -3,9 +3,10 @@ import bluebird from 'bluebird'
 
 const connection = await mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'forum',
+    port: 3306,
+    user: 'forum_user',
+    password: 'forum_password',
+    database: 'forum_db',
     Promise: bluebird,
 })
 
