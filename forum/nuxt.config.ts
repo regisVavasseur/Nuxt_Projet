@@ -1,8 +1,5 @@
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-
-// https://nuxt.com/docs/api/configuration/nuxt-config
-
 import { defineNuxtConfig } from "nuxt/config";
+import vuetify,{transformAssetUrls} from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -10,16 +7,12 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
   modules: [
-    (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => {
-        config.plugins.push(vuetify({ autoImport: true }))
-      })
-    },
-      "nuxt-server-utils",
+    ['vuetify', { autoImport: true }],
+    'nuxt-server-utils',
   ],
   nitro: {
     experimental: {
-    websocket: true
+      websocket: true
     },
     esbuild: {
       options: {
