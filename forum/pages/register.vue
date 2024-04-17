@@ -6,19 +6,9 @@
       <v-row>
         <v-col cols="12">
           <v-text-field
-            v-model="userName"
-            label="Nom d'utilisateur"
-            type="text"
-            required
-          ></v-text-field>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12">
-          <v-text-field
-            v-model="email"
-            label="Email"
-            type="email"
+            v-model="login"
+            label="login"
+            type="login"
             required
           ></v-text-field>
         </v-col>
@@ -62,13 +52,11 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
   data() {
     return {
-      userName: '',
-      email: '',
+      login: '',
       password: '',
       confirmPassword: '',
       isLoading: false
@@ -82,25 +70,29 @@ export default {
       }
 
       try {
-        const response = await axios.post('api/users', {
-          username: this.userName,
-          email: this.email,
-          password: this.password
+        const response = await fetch('api/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            login: this.login,
+            password: this.password
+          })
         })
 
-        if (response.status === 201) {
-          this.$store.commit('auth/setUser', { email: this.email })
+        if (response.status === 200) {
           this.$router.push('/')
         } else {
-          throw new Error('Inscription échouée')
+          throw new Error('Échec de l\'inscription')
         }
-      } catch (error) {
-        console.error(error)
-      } finally {
-        this.isLoading = false
-      }
+    } catch (error) {
+      console.error(error)
+    } finally {
+      this.isLoading = false
     }
   }
+}
 }
 </script>
 

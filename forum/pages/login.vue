@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
   data() {
@@ -31,15 +30,12 @@ export default {
     async login() {
       this.isLoading = true
       try {
-        const response = await axios.get('api/users', {
-          auth: {
-            username: this.email,
+        const response = await fetch('api/users', {
+            email: this.email,
             password: this.password
-          }
         })
 
         if (response.status === 200) {
-          this.$store.commit('auth/setUser', { email: this.email })
           this.$router.push('/')
         } else {
           throw new Error('Échec de la connexion')
