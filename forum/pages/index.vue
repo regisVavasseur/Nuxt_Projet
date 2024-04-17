@@ -2,7 +2,9 @@
   <div class="forums-list">
     <h1>Forums</h1>
     <div v-for="forum in forums" :key="forum.id" class="forum-card">
-      <h2>{{ forum.name }}</h2>
+      <h2>
+        <router-link :to="`/forums/${forum.id}/topics`">{{ forum.name }}</router-link>
+      </h2>
       <p>{{ forum.description }}</p>
     </div>
   </div>
