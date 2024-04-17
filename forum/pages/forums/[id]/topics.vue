@@ -1,8 +1,10 @@
 <template>
   <div class="topics-list">
-    <h1>Sujets du forum {{ forum[0].name }}</h1>
+    <h1>Sujets du forum</h1>
     <div v-for="topic in topics" :key="topic.id" class="topic-card">
-      <h2>{{ topic.title }}</h2>
+      <h2>
+        <router-link :to="`/topics/${topic.id}/posts`">{{ topic.title }}</router-link>
+      </h2>
       <p>{{ topic.content }}</p>
       <p class="date">Créé à {{ new Date(topic.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }} le {{ new Date(topic.created_at).toLocaleDateString() }}</p>
     </div>
@@ -13,7 +15,6 @@
 export default {
   data() {
     return {
-      forum: {},
       topics: []
     }
   },
