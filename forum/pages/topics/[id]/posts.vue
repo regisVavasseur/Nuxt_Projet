@@ -3,6 +3,7 @@
     <h1>Posts</h1>
     <div v-for="post in posts" :key="post.id" class="post-card">
       <h2>{{ post.content }}</h2>
+      <p>Posté par {{ post.login }}</p>
       <p class="date">Créé à {{ new Date(post.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }} le {{ new Date(post.created_at).toLocaleDateString() }}</p>
     </div>
   </div>
@@ -12,7 +13,16 @@
 export default {
   data() {
     return {
-      posts: []
+      posts: [],
+      users: {}
+    }
+  },
+  methods: {
+    async fetchUserName(userId) {
+      const response = await fetch(`/api/users/${userId}`);
+      const data = await response.json();
+      this.users[userId] = data.user[0].login;
+      return data.user[0].login;
     }
   },
   async mounted() {
@@ -20,6 +30,9 @@ export default {
     const response = await fetch(`/api/topics/${topicId}/posts`);
     const data = await response.json();
     this.posts = data.posts;
+    for (let post of this.posts) {
+      post.login = await this.fetchUserName(post.user_id);
+    }
   }
 }
 </script>
