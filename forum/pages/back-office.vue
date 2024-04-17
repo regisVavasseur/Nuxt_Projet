@@ -90,14 +90,37 @@ export default {
         this.isSubmitting = false
       }
     },
-    createForum () {
+    async createForum () {
       // Add code to create a new forum
+      try {
+        // Make an API call to create the forum
+        const response = await axios.post('/api/forums', {
+          forumName: this.forumName,
+          subjectName: this.subjectName,
+          message: this.message,
+          pseudo: this.pseudo
+        });
+        // Handle successful creation of the forum
+      } catch (error) {
+        // Handle error during creation of the forum
+      }
     },
-    editForum () {
-      // Add code to edit a forum
+      async editForum () {
+        try {
+          // Make an API call to edit the forum
+          const response = await axios.put(`/api/forums/${forumId}`, {
+            forumName: this.forumName,
+            subjectName: this.subjectName,
+            message: this.message,
+            pseudo: this.pseudo
+          });
+          // Handle successful editing of the forum
+        } catch (error) {
+          // Handle error during editing of the forum
+        }
+      }
     }
-  },
-}
+  }
 </script>
 
 <style>
