@@ -64,24 +64,35 @@
 </template>
 
 <script>
+
+
+import Login from './login.vue';
+
 export default {
   data() {
     return {
       name: '',
-      surname: '',
+      Login: '',
       username: '',
       email: '',
       isSubmitting: false,
       forumName: '',
       subjectName: '',
       message: '',
-      pseudo: ''
+      pseudo: '',
+      role:''
     }
   },
   methods: {
     async createAdmin() {
       this.isSubmitting = true
       // Make an API call to create the admin account
+      const response = await axios.post('/api/users', {
+        name: this.name,
+        Login: this.Login,
+        role:this.role,
+      });
+      // Handle successful creation of admin account
       try {
         // Handle successful creation of admin account
       } catch (error) {
