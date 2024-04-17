@@ -7,7 +7,11 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
   modules: [
-    ['vuetify', { autoImport: true }],
+    (_options, nuxt) => {
+      nuxt.hooks.hook('vite:extendConfig', (config) => {
+        config.plugins.push(vuetify({ autoImport: true }))
+      })
+    },
     'nuxt-server-utils',
   ],
   nitro: {
