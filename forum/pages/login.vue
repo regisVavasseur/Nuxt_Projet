@@ -31,7 +31,7 @@ export default {
     async login() {
       this.isLoading = true
       try {
-        const response = await axios.get('api/user', {
+        const response = await axios.get('api/users', {
           auth: {
             username: this.email,
             password: this.password
