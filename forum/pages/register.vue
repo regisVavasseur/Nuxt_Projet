@@ -64,44 +64,43 @@ export default {
   },
   methods: {
     async register() {
-  this.isLoading = true
-  if (this.password !== this.confirmPassword) {
-    return false;
-  }
+      this.isLoading = true
+      if (this.password !== this.confirmPassword) {
+        return false;
+      }
 
-  try {
-    const response = await fetch('api/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        login: this.login,
-        password: this.password
-      })
-    })
+      try {
+        const response = await fetch('api/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            login: this.login,
+            password: this.password
+          })
+        })
 
-    if (!response.ok) {
-      const error = await response.json()
-      throw new Error(error.error)
-    }
+        if (!response.ok) {
+          const error = await response.json()
+          throw new Error(error.error)
+        }
 
-    const data = await response.json()
-    console.log('User registered:', data.users)
-    this.isLoading = false
-  } catch (error) {
-    console.error('Error:', error)
-    this.isLoading = false
-    // Afficher une erreur à l'utilisateur
-  }
+        const data = await response.json()
+        console.log('User registered:', data.users)
+        this.isLoading = false
 
         if (response.status === 200) {
           this.$router.push('/')
         } else {
           throw new Error('Échec de l\'inscription')
         }
+      } catch (error) {
+        console.error('Error:', error)
+        this.isLoading = false
+        // Afficher une erreur à l'utilisateur
+      }
     }
-
   }
 }
 </script>
