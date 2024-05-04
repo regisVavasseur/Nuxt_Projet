@@ -5,15 +5,23 @@ declare module 'nitropack' {
   interface InternalApi {
     '/api/forums': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/forums.get').default>>>>
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/forums.post').default>>>>
     }
-    '/api/posts': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/posts.get').default>>>>
+    '/api/forums/:id/topics': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/forums/[id]/topics.get').default>>>>
     }
     '/api/topics': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/topics.get').default>>>>
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/topics.post').default>>>>
+    }
+    '/api/topics/:id/posts': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/topics/[id]/posts.get').default>>>>
     }
     '/api/users': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/users.get').default>>>>
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/users.post').default>>>>
+    }
+    '/api/users/:id': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/users/[id].get').default>>>>
     }
     '/_ws': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/routes/_ws').default>>>>
