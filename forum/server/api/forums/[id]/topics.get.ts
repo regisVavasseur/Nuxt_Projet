@@ -4,7 +4,11 @@ export default defineEventHandler(async (event: any) => {
     const [topics] = await db.execute(
         "SELECT * FROM `topics` WHERE `forum_id` = ?", [forumId]
     )
+    const [forum] = await db.execute(
+        "SELECT * FROM `forums` WHERE `id` = ?", [forumId]
+    )
     return {
-        topics: topics
+        topics: topics,
+        forum: forum
     }
 });
